@@ -6,6 +6,8 @@ import 'screens/add_member.dart';
 import 'screens/add_meal.dart';
 import 'screens/profile.dart';
 import 'screens/add_expense.dart';
+import 'screens/login.dart';
+import 'screens/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
       child: Consumer<MessProvider>(
         builder: (context, prov, _) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Mess Manager',
             theme: prov.isDark ? ThemeData.dark() : ThemeData.light(),
             home: const RootPage(),
@@ -51,6 +54,35 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: _index == 0 ? const Text('Home') : const SizedBox.shrink(),
+        actions: _index == 0
+            ? [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const LoginScreen()),
+                      ),
+                      child: const Text('Login'),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const SignupScreen()),
+                      ),
+                      child: const Text('SignUp'),
+                    ),
+                  ),
+                ),
+              ]
+            : null,
+      ),
       body: _pages[_index],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
