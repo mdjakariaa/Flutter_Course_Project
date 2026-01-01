@@ -28,16 +28,11 @@ class MessProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addExpense(String memberId, double amount) {
-    final member = _members.firstWhere((m) => m.id == memberId);
+  /// Add an expense by [title]. Optionally associate to a [memberId].
+  void addExpense(String title, double amount, {String? memberId}) {
     final id = DateTime.now().microsecondsSinceEpoch.toString();
     _expenses.add(
-      Expense(
-        id: id,
-        memberId: memberId,
-        memberName: member.name,
-        amount: amount,
-      ),
+      Expense(id: id, title: title, amount: amount, memberId: memberId),
     );
     notifyListeners();
   }

@@ -10,7 +10,7 @@ class AddExpenseScreen extends StatefulWidget {
 }
 
 class _AddExpenseScreenState extends State<AddExpenseScreen> {
-  String? _selectedId;
+  final TextEditingController _titleCtrl = TextEditingController();
   final TextEditingController _amtCtrl = TextEditingController();
 
   @override
@@ -22,15 +22,9 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            DropdownButtonFormField<String>(
-              value: _selectedId,
-              hint: const Text('Select Member'),
-              items: prov.members
-                  .map(
-                    (m) => DropdownMenuItem(value: m.id, child: Text(m.name)),
-                  )
-                  .toList(),
-              onChanged: (v) => setState(() => _selectedId = v),
+            TextField(
+              controller: _titleCtrl,
+              decoration: const InputDecoration(labelText: 'Expense name'),
             ),
             const SizedBox(height: 8),
             TextField(
@@ -41,10 +35,11 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
             const SizedBox(height: 12),
             ElevatedButton(
               onPressed: () {
-                final id = _selectedId;
+                final title = _titleCtrl.text.trim();
                 final amt = double.tryParse(_amtCtrl.text) ?? 0.0;
-                if (id == null || amt <= 0) return;
-                prov.addExpense(id, amt);
+                if (title.isEmpty || amt <= 0) return;
+                prov.addExpense(title, amt);
+                _titleCtrl.clear();
                 _amtCtrl.clear();
                 ScaffoldMessenger.of(
                   context,
@@ -66,7 +61,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                 itemBuilder: (context, i) {
                   final e = prov.expenses.reversed.toList()[i];
                   return ListTile(
-                    title: Text(e.memberName),
+                    title: Text(e.title),
                     subtitle: Text(e.date.toString()),
                     trailing: Text(e.amount.toStringAsFixed(2)),
                   );
