@@ -12,18 +12,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-  void initState() {
-    super.initState();
-    // Load data on init
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final messProvider = context.read<MessProvider>();
-      if (messProvider.members.isEmpty && messProvider.expenses.isEmpty) {
-        messProvider.loadAllData();
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Consumer<MessProvider>(
       builder: (context, messProvider, _) {
