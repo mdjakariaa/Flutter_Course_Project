@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:uuid/uuid.dart';
 import '../models/member.dart';
 import '../models/expense.dart';
 import 'supabase_config.dart';
@@ -47,8 +48,10 @@ class DatabaseService {
       }
 
       final now = DateTime.now().toIso8601String();
+      final id = const Uuid().v4();
       final response =
           await _supabaseClient.from(DatabaseTables.members).insert({
+            MemberColumns.id: id,
             MemberColumns.userId: userId,
             MemberColumns.name: name.trim(),
             MemberColumns.meal: 0,
@@ -152,9 +155,11 @@ class DatabaseService {
 
       final now = DateTime.now().toIso8601String();
       final expenseDate = (date ?? DateTime.now()).toIso8601String();
+      final id = const Uuid().v4();
 
       final response =
           await _supabaseClient.from(DatabaseTables.expenses).insert({
+            ExpenseColumns.id: id,
             ExpenseColumns.userId: userId,
             ExpenseColumns.title: title.trim(),
             ExpenseColumns.amount: amount,
