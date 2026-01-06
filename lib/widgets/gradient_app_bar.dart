@@ -9,7 +9,7 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
     Key? key,
     required this.title,
     this.actions,
-    this.centerTitle = true,
+    this.centerTitle = false,
   }) : super(key: key);
 
   @override
@@ -18,7 +18,12 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: title.isNotEmpty ? Text(title) : null,
+      title: title.isNotEmpty
+          ? Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: Align(alignment: Alignment.centerLeft, child: Text(title)),
+            )
+          : null,
       centerTitle: centerTitle,
       actions: actions,
       backgroundColor: Colors.transparent,

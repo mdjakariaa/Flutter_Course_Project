@@ -50,11 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           subtitle: Text(
                             'Meals: ${member.meal}  •  Expense: \$${exp.toStringAsFixed(2)}',
                           ),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete, color: Colors.red),
-                            onPressed: () =>
-                                _confirmDelete(member.id, member.name),
-                          ),
                         ),
                       );
                     },
@@ -64,29 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         );
       },
-    );
-  }
-
-  void _confirmDelete(String memberId, String memberName) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Delete Member'),
-        content: Text('Delete $memberName and all associated expenses?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              context.read<MessProvider>().deleteMember(memberId);
-            },
-            child: const Text('Delete', style: TextStyle(color: Colors.red)),
-          ),
-        ],
-      ),
     );
   }
 }
