@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/mess_provider.dart';
+import '../widgets/gradient_app_bar.dart';
 
 class AddExpenseScreen extends StatefulWidget {
   const AddExpenseScreen({super.key});
@@ -29,7 +30,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Add Expense')),
+      appBar: const GradientAppBar(title: 'Add Expense'),
       body: Consumer<MessProvider>(
         builder: (context, provider, _) {
           return Padding(

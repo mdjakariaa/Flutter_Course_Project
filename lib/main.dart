@@ -11,6 +11,7 @@ import 'screens/add_member.dart';
 import 'screens/add_meal.dart';
 import 'screens/profile.dart';
 import 'screens/add_expense.dart';
+import 'widgets/gradient_app_bar.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -576,9 +577,11 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> _titles = ['Home', 'Add Member', 'Add Meal', 'Profile'];
+
     return Scaffold(
-      appBar: AppBar(
-        title: _index == 0 ? const Text('Home') : const SizedBox.shrink(),
+      appBar: GradientAppBar(
+        title: _titles[_index],
         actions: _index == 0
             ? [
                 Padding(

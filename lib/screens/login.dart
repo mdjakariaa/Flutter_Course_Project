@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import 'home.dart';
+import '../widgets/gradient_app_bar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
+      appBar: const GradientAppBar(title: 'Login/SignUp'),
       body: Consumer<AuthProvider>(
         builder: (context, authProvider, _) {
           return SingleChildScrollView(
@@ -101,7 +102,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     prefixIcon: const Icon(Icons.lock),
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscurePassword ? Icons.visibility : Icons.visibility_off,
+                        _obscurePassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                       ),
                       onPressed: () {
                         setState(() => _obscurePassword = !_obscurePassword);
@@ -129,7 +132,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         )
                       : const Text(
                           'Login',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                 ),
 
@@ -142,8 +148,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Text("Don't have an account?"),
                     const SizedBox(width: 4),
                     TextButton(
-                      onPressed:
-                          authProvider.isLoading ? null : _navigateToSignUp,
+                      onPressed: authProvider.isLoading
+                          ? null
+                          : _navigateToSignUp,
                       child: const Text('Sign Up'),
                     ),
                   ],
@@ -176,18 +183,15 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     final authProvider = context.read<AuthProvider>();
-    final success = await authProvider.login(
-      email: email,
-      password: password,
-    );
+    final success = await authProvider.login(email: email, password: password);
 
     if (success && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Login successful!')),
-      );
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Login successful!')));
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
     }
   }
 
@@ -202,4 +206,3 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 }
-
