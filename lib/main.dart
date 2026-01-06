@@ -121,6 +121,7 @@ class _LoginScreenWithToggleState extends State<LoginScreenWithToggle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const GradientAppBar(title: 'Login/SignUp'),
       body: Consumer<AuthProvider>(
         builder: (context, authProvider, _) {
           return SingleChildScrollView(
@@ -310,6 +311,7 @@ class _SignupScreenWithToggleState extends State<SignupScreenWithToggle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const GradientAppBar(title: 'Login/SignUp'),
       body: Consumer<AuthProvider>(
         builder: (context, authProvider, _) {
           return SingleChildScrollView(
