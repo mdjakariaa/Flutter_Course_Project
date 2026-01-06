@@ -33,12 +33,6 @@ class _AddMemberScreenState extends State<AddMemberScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Add Member',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 12),
-
             // Error message
             Consumer<MessProvider>(
               builder: (context, provider, _) {

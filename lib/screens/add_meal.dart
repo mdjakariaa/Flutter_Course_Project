@@ -34,12 +34,6 @@ class _AddMealScreenState extends State<AddMealScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Add Meal',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 12),
-
             // Error message
             Consumer<MessProvider>(
               builder: (context, provider, _) {
