@@ -69,7 +69,7 @@ class _AddMealScreenState extends State<AddMealScreen> {
             Consumer<MessProvider>(
               builder: (context, provider, _) {
                 return DropdownButtonFormField<String>(
-                  value: _selectedId,
+                  initialValue: _selectedId,
                   hint: const Text('Select Member'),
                   isExpanded: true,
                   decoration: InputDecoration(

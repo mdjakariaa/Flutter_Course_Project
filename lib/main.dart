@@ -579,11 +579,11 @@ class _RootPageState extends State<RootPage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> _titles = ['Home', 'Add Member', 'Add Meal', 'Profile'];
+    final List<String> titles = ['Home', 'Add Member', 'Add Meal', 'Profile'];
 
     return Scaffold(
       appBar: GradientAppBar(
-        title: _titles[_index],
+        title: titles[_index],
         actions: _index == 0
             ? [
                 Padding(

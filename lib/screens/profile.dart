@@ -189,7 +189,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           _StatItem(
                             label: 'Total Expenses',
                             value:
-                                '\৳${messProvider.totalExpense.toStringAsFixed(2)}',
+                                '৳${messProvider.totalExpense.toStringAsFixed(2)}',
                           ),
                           const SizedBox(height: 8),
                           _StatItem(
@@ -200,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           _StatItem(
                             label: 'Per Meal Cost',
                             value:
-                                '\৳${messProvider.perMeal.toStringAsFixed(2)}',
+                                '৳${messProvider.perMeal.toStringAsFixed(2)}',
                           ),
                         ],
                       );

@@ -1,5 +1,6 @@
 /// Supabase Configuration
 /// This file contains Supabase credentials and constants
+library;
 
 const String supabaseUrl = 'https://ibkjfbbcvhtyemvpgwcf.supabase.co';
 const String supabaseAnonKey = 'sb_publishable_jJv2nPMnuXOpRrhutK9q6A_lNkKkgSr';

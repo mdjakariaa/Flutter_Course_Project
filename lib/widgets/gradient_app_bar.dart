@@ -6,11 +6,11 @@ class GradientAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
 
   const GradientAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.actions,
     this.centerTitle = false,
-  }) : super(key: key);
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

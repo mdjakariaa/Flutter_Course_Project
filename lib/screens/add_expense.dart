@@ -92,7 +92,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
 
                 // Member selection dropdown
                 DropdownButtonFormField<String?>(
-                  value: _selectedMemberId,
+                  initialValue: _selectedMemberId,
                   hint: const Text('Assign to Member (Optional)'),
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
