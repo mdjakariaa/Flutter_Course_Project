@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                           subtitle: Text(
-                            'Meals: ${member.meal}  •  Expense: \$${exp.toStringAsFixed(2)}',
+                            'Meals: ${member.meal}  •  Expense: \৳${exp.toStringAsFixed(2)}',
                           ),
                         ),
                       );

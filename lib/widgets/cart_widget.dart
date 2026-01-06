@@ -62,13 +62,12 @@ class CartWidget extends StatelessWidget {
                     const SizedBox(width: 8),
                     _StatCard(
                       title: 'Total Expense',
-                      value:
-                          '\$${messProvider.totalExpense.toStringAsFixed(2)}',
+                      value: '৳${messProvider.totalExpense.toStringAsFixed(2)}',
                     ),
                     const SizedBox(width: 8),
                     _StatCard(
                       title: 'Per Meal',
-                      value: '\$${messProvider.perMeal.toStringAsFixed(2)}',
+                      value: '৳${messProvider.perMeal.toStringAsFixed(2)}',
                     ),
                   ],
                 ),

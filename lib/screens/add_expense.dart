@@ -82,7 +82,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                   decoration: InputDecoration(
                     labelText: 'Amount',
                     hintText: '0.00',
-                    prefixText: '\$ ',
+                    prefixText: '৳ ',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -159,7 +159,7 @@ class _AddExpenseScreenState extends State<AddExpenseScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      '\$${expense.amount.toStringAsFixed(2)}',
+                                      '৳${expense.amount.toStringAsFixed(2)}',
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
